@@ -3,8 +3,14 @@
     <slot></slot>
 </template>
 
-<style scoped>
+<style>
     table {
         border: 1px solid #ddd;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    th, td {
+        padding: 20px;
     }
 </style>

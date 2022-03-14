@@ -7,7 +7,7 @@
       <aside>
         <sidebar>
           <template #default="{page}">   <!--  #default="slotProps" //-->
-            <a>{{ page }}</a>            <!--  {{ slotProps.page }} //-->
+            <a @click="selectedPage=`${page}`">{{ page }}</a>            <!--  {{ slotProps.page }} //-->
           </template>
         </sidebar>
       </aside>
@@ -38,7 +38,7 @@
             </div>
           </template>
         </orders> -->
-        <best-sellers>
+        <!--<best-sellers>
           <table>
             <thead>
               <tr>
@@ -57,32 +57,34 @@
               </tr>
             </tbody>
           </table>
-        </best-sellers>
+        </best-sellers>//-->
+        <component :is="selectedPage.replace(/\s/, '')"></component>
       </main>
     </div>
   </div>
 </template>
 
 <script>
-// import Overview from "./views/Overview";
+import Overview from "./views/Overview";
 import Sidebar from "./components/Sidebar";
-// import Orders from "./views/Orders";
+import Orders from "./views/Orders";
 import BestSellers from './views/BestSellers.vue';
-// import SalesTotal from "./components/SalesTotal";
+import SalesTotal from "./components/SalesTotal";
 import {orders} from "../order";
 
 export default {
   name: 'App',
   components: {
-    //Overview,
+    Overview,
     Sidebar,
-    // Orders,
+    Orders,
     BestSellers,
-    // SalesTotal,
+    SalesTotal,
   },
   data() {
     return {
-      orders
+      orders,
+      selectedPage: 'Overview'
     }
   },
   computed: {

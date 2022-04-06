@@ -61,6 +61,7 @@
         <component :is="selectedPage.replace(/\s/, '')"></component>
       </main>
     </div>
+    {{ quantityOfItemsSold }}
   </div>
 </template>
 
@@ -87,6 +88,16 @@ export default {
       selectedPage: 'Overview'
     }
   },
+  provide() {
+    return {
+      quantityOfItemsSold: this.quantityOfItemsSold,
+      totalSalesValue: this.totalSalesValue,
+      bestSeller: this.sortedItems[0],
+      orders: this.orders
+    }
+    
+  },
+
   computed: {
     sortedItems() {
       const sortedItems = [];
@@ -108,12 +119,28 @@ export default {
 
       sortedItems.sort((a, b) => a.quantity > b.quantity ? -1 : 1);
       return sortedItems;
+    },
+    quantityOfItemsSold() {
+      let qty = 0;
+      this.sortedItems.map((item) => {
+        qty += item.quantity;
+      })
+      return qty;
+    },
+    totalSalesValue() {
+      let total = 0;
+      this.orders.map((order) => {
+        order.items.map((item) => {
+          total += item.price;
+        })
+      })
+      return total;
     }
   }
 };
 </script>
 
-<style scoped>
+<style>
 .app-wrapper {
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;

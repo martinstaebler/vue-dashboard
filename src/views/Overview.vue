@@ -2,30 +2,9 @@
     <div>
         <h3 class="page-title">Overview</h3>
         <section>
-            <items-sold>
-                <template v-slot:icon>
-                    <span>&#128200;</span>
-                </template>
-                <template v-slot:default>
-                    <span class="light-text">{{ quantityOfItemsSold }}</span>
-                </template>
-            </items-sold>
-            <sales-total>
-                <template v-slot:icon>
-                    <span>&#128176;</span>
-                </template>
-                <template v-slot:default>
-                    <span class="light-text">&euro; {{ quantityOfItemsSold }}</span>
-                </template>
-            </sales-total>
-            <best-seller>
-                <template v-slot:icon>
-                    <span>&#128293;</span>
-                </template>
-                <template v-slot:default>
-                    <span class="light-text">{{ bestSeller }}</span>
-                </template>
-            </best-seller>
+            <items-sold></items-sold>
+            <sales-total></sales-total>
+            <best-seller></best-seller>
         </section>
     </div>
 </template>

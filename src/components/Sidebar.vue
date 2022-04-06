@@ -26,5 +26,10 @@ export default {
 
     li {
         padding: 10px 0;
+        cursor: pointer;
+    }
+
+    li:hover {
+        color:#ff0000;
     }
 </style>
